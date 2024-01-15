@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  bot:
+    build:
+      context: .
+    env_file:
+      - .env
+    container_name: jw.korotkova-bot
+    network_mode: default
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 5
+        delay: 5s
