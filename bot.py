@@ -14,13 +14,13 @@ inlines.add(
 )
 
 
-@bot.message_handler(commands=["start", Commands.RESTART.value])
+@bot.message_handler(commands=["start", Commands.RESTART.name.lower()])
 async def handler_start(message: types.Message):
     logger.info("Received %s command [%s@%s]", message.text, message.from_user.id, message.from_user.username)
     await bot.send_message(message.chat.id, Messages.START.value, reply_markup=inlines)
 
 
-@bot.message_handler(commands=[Commands.VERSION.value])
+@bot.message_handler(commands=[Commands.VERSION.name.lower()])
 async def handler_version(message: types.Message):
     logger.info("Received %s command [%s@%s]", message.text, message.from_user.id, message.from_user.username)
     await bot.send_message(message.chat.id, Messages.VERSION.value % info.__version__, reply_markup=inlines)
