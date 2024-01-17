@@ -1,6 +1,7 @@
 from telebot import logger, types
 from telebot.async_telebot import AsyncTeleBot
 
+import info
 import settings
 from const import Buttons, Messages
 
@@ -18,6 +19,12 @@ main_menu = types.MenuButton()
 async def handler_start(message: types.Message):
     logger.info("Received %s command [%s@%s]", message.text, message.from_user.id, message.from_user.username)
     await bot.send_message(message.chat.id, Messages.START.value, reply_markup=inlines)
+
+
+@bot.message_handler(commands=["version"])
+async def handler_version(message: types.Message):
+    logger.info("Received %s command [%s@%s]", message.text, message.from_user.id, message.from_user.username)
+    await bot.send_message(message.chat.id, Messages.VERSION.value % info.__version__, reply_markup=inlines)
 
 
 @bot.message_handler(content_types=["text"])
