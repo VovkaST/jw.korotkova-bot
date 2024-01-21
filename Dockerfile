@@ -5,7 +5,7 @@ ARG BUILD_ENVIRONMENT=requirements/base.txt
 
 COPY . ${WORKDIR}
 RUN pip install --upgrade pip
-RUN pip install -r ${BUILD_ENVIRONMENT}
+RUN pip install wheel
 RUN pip wheel --wheel-dir ${WORKDIR}/wheels -r ${BUILD_ENVIRONMENT}
 
 ENV PYTHONUNBUFFERED 1

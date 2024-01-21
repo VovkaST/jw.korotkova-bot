@@ -11,6 +11,8 @@ inlines.add(
     types.KeyboardButton(Buttons.ORDER.value),
     types.KeyboardButton(Buttons.PRICE.value),
     types.KeyboardButton(Buttons.DELIVERY.value),
+    types.KeyboardButton(Buttons.CARE.value),
+    types.KeyboardButton(Buttons.ABOUT.value),
 )
 
 
@@ -35,6 +37,10 @@ async def handler_messages(message: types.Message):
         await bot.reply_to(message, Messages.PRICE.value)
     elif message.text == Buttons.DELIVERY:
         await bot.reply_to(message, Messages.DELIVERY.value)
+    elif message.text == Buttons.CARE:
+        await bot.reply_to(message, Messages.CARE.value)
+    elif message.text == Buttons.ABOUT:
+        await bot.reply_to(message, Messages.ABOUT.value)
     else:
         logger.info("Unknown message: %s [%s@%s]", message.text, message.from_user.id, message.from_user.username)
         await bot.reply_to(message, Messages.UNKNOWN.value)
