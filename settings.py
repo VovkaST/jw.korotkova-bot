@@ -10,3 +10,4 @@ env.read_env(ROOT_PATH / ".env")
 
 TOKEN = env.str("TOKEN")
 LOGGING_LEVEL = env.int("LOGGING_LEVEL", logging.INFO)
+RESTART_TIMEOUT = env.int("RESTART_TIMEOUT", 5)
